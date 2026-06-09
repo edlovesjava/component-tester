@@ -1,0 +1,12 @@
+.pio/
+.pioenvs/
+.piolib/
+.piolibdeps/
+.pypackages/
+__pycache__/
+*.pyc
+.vscode/.browse.*
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/c_cpp_properties.json
