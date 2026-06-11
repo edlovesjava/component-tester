@@ -1,0 +1,35 @@
+CompileFlags:
+  Add:
+    - "-Wno-unknown-warning-option"
+    - "-isystem${USERPROFILE}\.platformio\packages\toolchain-xtensa-esp32\xtensa-esp32-elf\include"
+    - "-isystem${USERPROFILE}\.platformio\packages\toolchain-xtensa-esp32\lib\gcc\xtensa-esp32-elf\8.4.0\include"
+    - "-isystem${USERPROFILE}\.platformio\packages\toolchain-xtensa-esp32\xtensa-esp32-elf\sys-include"
+    - "-isystem${USERPROFILE}\.platformio\packages\toolchain-xtensa-esp32\xtensa-esp32-elf\include\c++\8.4.0"
+  Remove:
+    - "-fno-tree-switch-conversion"
+    - "-mtext-section-literals"
+    - "-mlongcalls"
+    - "-fno-rtti"
+    - "-fno-exceptions"
+    - "-fno-threadsafe-statics"
+    - "-fcheck-new"
+    - "-freorder-blocks"
+    - "-fschedule-insns"
+    - "-fno-shrink-wrap"
+    - "-freorder-functions"
+    - "-fdata-sections"
+    - "-fno-jump-tables"
+    - "-std=gnu++11"
+    - "-std=gnu++14"
+    - "-std=gnu++17"
+    - "-O2"
+    - "-Os"
+    - "-Og"
+  CompilationDatabase: .
+
+Diagnostics:
+  Suppress:
+    - "unknown_argument"
+
+Toolchain:
+  QueryDriver: C:\Users\edlov\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-gcc.exe,C:\Users\edlov\.platformio\packages\toolchain-xtensa-esp32\bin\xtensa-esp32-elf-g++.exe
