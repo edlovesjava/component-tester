@@ -34,9 +34,9 @@ static void drawSymbol(bool npn, int c, int b, int e) {
 
     tft.setTextColor(TFT_GREEN, TFT_BLACK);
     tft.setTextSize(1);
-    tft.setCursor(94, 22); tft.print("C=T"); tft.print(c);
-    tft.setCursor(36, 36); tft.print("B=T"); tft.print(b);
-    tft.setCursor(94, 52); tft.print("E=T"); tft.print(e);
+    tft.setCursor(94, 22); tft.print("C("); tft.print(c); tft.print(")");
+    tft.setCursor(36, 36); tft.print("B("); tft.print(b); tft.print(")");
+    tft.setCursor(94, 52); tft.print("E("); tft.print(e); tft.print(")");
 }
 
 static void drawSeparator() {
