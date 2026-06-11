@@ -68,7 +68,7 @@ static void probeRev(uint8_t drive, uint8_t rev[3][3]) {
     tp.allInput();
 }
 
-static float measureHfe(uint8_t c, uint8_t b, uint8_t e, bool npn) {
+static float measureHfe(uint8_t c, uint8_t b, uint8_t e, bool npn, float* i_e = nullptr) {
     if (npn) {
         tp.setPin(c, PinDrive::DRV_HIGH, PinDrive::DRV_HIZ);
         tp.setPin(e, PinDrive::DRV_LOW, PinDrive::DRV_HIZ);
@@ -94,9 +94,11 @@ static float measureHfe(uint8_t c, uint8_t b, uint8_t e, bool npn) {
     if (npn) {
         i_b = (3.3f - vB) / 470000.0f;
         i_c = (3.3f - vC) / 680.0f;
+        if (i_e) *i_e = vE / 680.0f;
     } else {
         i_b = vB / 470000.0f;
         i_c = vC / 680.0f;
+        if (i_e) *i_e = (3.3f - vE) / 680.0f;
     }
 
 #ifdef DEBUG_IDENTIFY
@@ -149,8 +151,9 @@ Identification Identifier::identify() {
         if (j != (uint8_t)base) other[oi++] = j;
     }
 
-    float h0 = measureHfe(other[0], base, other[1], npn);
-    float h1 = measureHfe(other[1], base, other[0], npn);
+    float ie0 = 0, ie1 = 0;
+    float h0 = measureHfe(other[0], base, other[1], npn, &ie0);
+    float h1 = measureHfe(other[1], base, other[0], npn, &ie1);
 #ifdef DEBUG_IDENTIFY
     Serial.printf("h0=%.1f h1=%.1f npn=%d\n", h0, h1, npn);
 #endif
@@ -158,9 +161,11 @@ Identification Identifier::identify() {
     if (h0 >= h1 && h0 >= MIN_HFE) {
         r.pins = {other[0], (uint8_t)base, other[1]};
         r.hfe = h0;
+        r.i_e = ie0;
     } else if (h1 >= MIN_HFE) {
         r.pins = {other[1], (uint8_t)base, other[0]};
         r.hfe = h1;
+        r.i_e = ie1;
     } else {
         r.type = TransistorType::UNKNOWN;
         return r;

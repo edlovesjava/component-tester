@@ -16,6 +16,7 @@ struct Identification {
     PinAssignment pins = {0, 0, 0};
     float v_be = 0.0f;
     float hfe = 0.0f;
+    float i_e = 0.0f;
     bool valid() const {
         return type != TransistorType::UNKNOWN && pins.valid();
     }
