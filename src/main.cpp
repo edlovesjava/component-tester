@@ -20,15 +20,16 @@ static void drawType(const char* type) {
 }
 
 static void drawSymbol(bool npn, int c, int b, int e) {
-    tft.drawFastVLine(78, 30, 16, TFT_WHITE);
+    tft.fillRect(77, 30, 3, 16, TFT_WHITE);
+    tft.drawCircle(78, 38, 12, TFT_WHITE);
     tft.drawLine(92, 24, 78, 38, TFT_WHITE);
     tft.drawFastHLine(58, 38, 20, TFT_WHITE);
     tft.drawLine(78, 38, 92, 52, TFT_WHITE);
 
     if (npn) {
-        tft.fillTriangle(89, 49, 83, 47, 87, 43, TFT_WHITE);
+        tft.fillTriangle(86, 46, 80, 44, 84, 40, TFT_WHITE);
     } else {
-        tft.fillTriangle(83, 43, 85, 49, 89, 45, TFT_WHITE);
+        tft.fillTriangle(80, 40, 82, 46, 86, 42, TFT_WHITE);
     }
 
     tft.setTextColor(TFT_GREEN, TFT_BLACK);
