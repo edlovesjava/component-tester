@@ -137,6 +137,25 @@ TFT display shows the transistor symbol with C/B/E pin labels and measured value
 - **Current range**: hFE is measured at a low collector current (~150 µA) and may differ from datasheet values specified at higher currents.
 - **clangd on Windows**: The xtensa-esp32-elf toolchain is not fully supported by clangd on Windows. The "expected function body after function declarator" error from framework headers is harmless. Use the post-processed `compile_commands.json` for LSP.
 
+## Documentation
+
+- [`docs/example-readings.md`](docs/example-readings.md) — example TFT
+  layouts and serial output from real captures on a 2N2222A and a 2N5401,
+  with annotations and a side-by-side V_BE-coincidence demo. Read first
+  if you want to know what "working" looks like.
+- [`docs/theory.md`](docs/theory.md) — how identification works in physical
+  terms (junctions, base detection, bias network, β formula, saturation).
+  Read this first if you want to understand the firmware.
+- [`docs/glossary.md`](docs/glossary.md) — every abbreviation and term of
+  art used in the code and docs, with beginner/intermediate/advanced
+  external links per concept (BJT, NPN/PNP, diode, h_FE, V_BE, Hi-Z,
+  Thévenin source, etc.).
+- [`docs/code-review-pedagogy.md`](docs/code-review-pedagogy.md) — the
+  review notes that motivated the comment / naming choices in
+  `src/measure/identify.cpp`.
+- [`transistor-tester-spec.md`](transistor-tester-spec.md) — full
+  instrument specification including future phases.
+
 ## License
 
 MIT

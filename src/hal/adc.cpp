@@ -21,5 +21,8 @@ int16_t ADC::readRaw(uint8_t channel) {
 }
 
 float ADC::voltageForRaw(int16_t raw) const {
+    // ADS1115 in GAIN_ONE: ±4.096 V full-scale, 16-bit signed code.
+    //   one LSB ≈ 4.096 V / 32768 ≈ 125 µV — fine for millivolt-level V_BE.
+    // We rely on the chip's internal reference; no host-side calibration.
     return raw * 4.096f / 32768.0f;
 }
