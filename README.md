@@ -139,6 +139,10 @@ TFT display shows the transistor symbol with C/B/E pin labels and measured value
 
 ## Documentation
 
+- [`docs/example-readings.md`](docs/example-readings.md) — example TFT
+  layouts and serial output from real captures on a 2N2222A and a 2N5401,
+  with annotations and a side-by-side V_BE-coincidence demo. Read first
+  if you want to know what "working" looks like.
 - [`docs/theory.md`](docs/theory.md) — how identification works in physical
   terms (junctions, base detection, bias network, β formula, saturation).
   Read this first if you want to understand the firmware.

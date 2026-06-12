@@ -265,6 +265,8 @@ channels through RC filters as a poor man's DAC.
 ---
 
 ## See also
+- [example-readings.md](example-readings.md) — annotated example readings
+  from real 2N2222A and 2N5401 captures.
 - [theory.md](theory.md) — narrative explanation of how the firmware
   detects and measures a BJT.
 - [code-review-pedagogy.md](code-review-pedagogy.md) — review notes that

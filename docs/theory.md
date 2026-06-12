@@ -289,6 +289,9 @@ See `transistor-tester-spec.md` §6 for the long-form discussion.
 ---
 
 ## See also
+- [example-readings.md](example-readings.md) — annotated TFT mock-ups and
+  serial captures from real 2N2222A and 2N5401 measurements, with the
+  side-by-side V_BE-coincidence demo.
 - [glossary.md](glossary.md) — definitions and external links for every
   abbreviation and term used here.
 - [code-review-pedagogy.md](code-review-pedagogy.md) — the review that
