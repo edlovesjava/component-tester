@@ -131,11 +131,25 @@ static void drawWaiting(Reason r) {
     tft.drawCentreString(Identifier::reasonString(r), 80, 64, 1);
 }
 
+static void scanI2C() {
+    Serial.println("I2C scan...");
+    uint8_t found = 0;
+    for (uint8_t addr = 1; addr < 127; addr++) {
+        Wire.beginTransmission(addr);
+        if (Wire.endTransmission() == 0) {
+            Serial.printf("  device at 0x%02X\n", addr);
+            found++;
+        }
+    }
+    Serial.printf("I2C scan done, %u device(s)\n", found);
+}
+
 void setup() {
     Serial.begin(115200);
     delay(1000);
 
     Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL);
+    scanI2C();
 
     tft.init();
     tft.setRotation(3);
